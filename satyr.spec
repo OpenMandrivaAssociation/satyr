@@ -18,11 +18,11 @@ Group: System/Libraries
 License: GPLv2+
 URL: https://github.com/abrt/satyr
 Source0: https://fedorahosted.org/released/abrt/satyr-%{version}.tar.xz
+Patch1:	satyr-0.15-rpm5.patch
 BuildRequires: python2-devel
 BuildRequires: elfutils-devel
 BuildRequires: binutils-devel
-#needs porting to rpm5
-#BuildRequires: rpm-devel
+BuildRequires: rpm-devel
 BuildRequires: libtool
 BuildRequires: pkgconfig
 BuildRequires: automake
@@ -69,6 +69,9 @@ Python bindings for %{name}.
 %setup -q
 %apply_patches
 sed -i 's/env python/env python2/' tests/python/*.py
+
+printf '%s' '%{version}' > satyr-version
+autoreconf -fiv
 
 %build
 export PYTHON=python2
