@@ -11,8 +11,8 @@
 %define libname %mklibname %{name} %{major}
 
 Name: satyr
-Version: 0.14
-Release: %mkrel 4
+Version: 0.15
+Release: 1
 Summary: Tools to create anonymous, machine-friendly problem reports
 Group: System/Libraries
 License: GPLv2+
@@ -30,8 +30,6 @@ BuildRequires: gcc-c++
 %if %{?enable_python_manpage}
 BuildRequires: python-sphinx
 %endif
-
-Patch0: satyr-0.14-wformat.patch
 
 %description
 Satyr is a library that can be used to create and process microreports.
@@ -69,7 +67,7 @@ Python bindings for %{name}.
 
 %prep
 %setup -q
-%patch0 -p1
+%apply_patches
 sed -i 's/env python/env python2/' tests/python/*.py
 
 %build

@@ -1,2 +1,4 @@
-sources:
+removed_sources:
   satyr-0.14.tar.xz: dba09e6affb2dea09b9cad786b232f08a734d73a
+sources:
+  satyr-0.15.tar.xz: 1b6ba119edf9184ee30b68a4c3da044fe65e6487
