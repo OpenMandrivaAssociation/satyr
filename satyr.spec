@@ -12,7 +12,7 @@
 
 Name: satyr
 Version: 0.15
-Release: 2
+Release: 3
 Summary: Tools to create anonymous, machine-friendly problem reports
 Group: System/Libraries
 License: GPLv2+
