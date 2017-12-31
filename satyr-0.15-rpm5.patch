@@ -1,34 +1,5 @@
-diff -ur satyr-0.15.orig/configure.ac satyr-0.15/configure.ac
---- satyr-0.15.orig/configure.ac	2014-09-10 15:22:28.000000000 +0100
-+++ satyr-0.15/configure.ac	2014-10-23 09:48:20.934494824 +0100
-@@ -113,6 +113,7 @@
- AC_CHECK_LIB([unwind-coredump], [main])
- 
- # rpm
-+PKG_CHECK_MODULES([RPM], [rpm])
- AC_CHECK_LIB([rpm], [main])
- 
- # c++ symbol demangling
-Only in satyr-0.15: configure.ac.orig
-diff -ur satyr-0.15.orig/lib/Makefile.am satyr-0.15/lib/Makefile.am
---- satyr-0.15.orig/lib/Makefile.am	2014-06-20 17:32:38.000000000 +0100
-+++ satyr-0.15/lib/Makefile.am	2014-10-23 10:00:04.891442962 +0100
-@@ -62,8 +62,8 @@
- 	unstrip.c \
- 	utils.c
- 
--libsatyr_conv_la_CFLAGS = -Wall -Wformat=2 -std=gnu99 -D_GNU_SOURCE -I$(top_srcdir)/include $(GLIB_CFLAGS)
--libsatyr_conv_la_LDFLAGS = $(GLIB_LIBS)
-+libsatyr_conv_la_CFLAGS = -Wall -Wformat=2 -std=gnu99 -D_GNU_SOURCE -I$(top_srcdir)/include $(GLIB_CFLAGS) $(RPM_CFLAGS)
-+libsatyr_conv_la_LDFLAGS = $(GLIB_LIBS) $(RPM_LIBS)
- 
- if HAVE_LIBOPCODES
- # Conditional link is required to avoid linking to a library without
-Only in satyr-0.15/lib: Makefile.am~
-Only in satyr-0.15/lib: .Makefile.am.un~
-diff -ur satyr-0.15.orig/lib/rpm.c satyr-0.15/lib/rpm.c
---- satyr-0.15.orig/lib/rpm.c	2014-02-13 15:40:41.000000000 +0000
-+++ satyr-0.15/lib/rpm.c	2014-10-23 09:48:20.935494824 +0100
+--- satyr-0.24/lib/rpm.c.0001~	2017-11-01 15:07:06.000000000 +0100
++++ satyr-0.24/lib/rpm.c	2017-12-31 04:17:16.586741943 +0100
 @@ -25,11 +25,11 @@
  #include "internal_utils.h"
  #include <errno.h>
@@ -44,7 +15,7 @@ diff -ur satyr-0.15.orig/lib/rpm.c satyr-0.15/lib/rpm.c
  #endif
  #include <fcntl.h>
  #include <assert.h>
-@@ -277,18 +277,18 @@
+@@ -279,18 +279,18 @@ header_get_string(Header header,
                    rpmTag tag,
                    char **result)
  {
@@ -70,7 +41,7 @@ diff -ur satyr-0.15.orig/lib/rpm.c satyr-0.15/lib/rpm.c
      return str;
  }
  
-@@ -297,20 +297,21 @@
+@@ -299,20 +299,21 @@ header_get_uint32(Header header,
                    rpmTag tag,
                    uint32_t *result)
  {
@@ -99,7 +70,7 @@ diff -ur satyr-0.15.orig/lib/rpm.c satyr-0.15/lib/rpm.c
      return num;
  }
  
-@@ -389,14 +390,14 @@
+@@ -391,14 +392,14 @@ sr_rpm_package_get_by_name(const char *n
      }
  
      rpmts ts = rpmtsCreate();
@@ -116,7 +87,7 @@ diff -ur satyr-0.15.orig/lib/rpm.c satyr-0.15/lib/rpm.c
      {
          struct sr_rpm_package *package = header_to_rpm_info(header,
                                                              error_message);
-@@ -410,7 +411,7 @@
+@@ -412,7 +413,7 @@ sr_rpm_package_get_by_name(const char *n
          result = sr_rpm_package_append(result, package);
      }
  
@@ -125,7 +96,7 @@ diff -ur satyr-0.15.orig/lib/rpm.c satyr-0.15/lib/rpm.c
      rpmtsFree(ts);
      return result;
  #else
-@@ -431,14 +432,14 @@
+@@ -433,14 +434,14 @@ sr_rpm_package_get_by_path(const char *p
      }
  
      rpmts ts = rpmtsCreate();
@@ -142,7 +113,7 @@ diff -ur satyr-0.15.orig/lib/rpm.c satyr-0.15/lib/rpm.c
      {
          struct sr_rpm_package *package = header_to_rpm_info(header,
                                                              error_message);
-@@ -452,7 +453,7 @@
+@@ -454,7 +455,7 @@ sr_rpm_package_get_by_path(const char *p
          result = sr_rpm_package_append(result, package);
      }
  
@@ -151,4 +122,3 @@ diff -ur satyr-0.15.orig/lib/rpm.c satyr-0.15/lib/rpm.c
      rpmtsFree(ts);
      return result;
  #else
-Only in satyr-0.15/lib: rpm.c.orig
