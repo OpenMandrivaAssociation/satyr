@@ -12,7 +12,6 @@ Group: System/Libraries
 License: GPLv2+
 URL: https://github.com/abrt/satyr
 Source0: https://github.com/abrt/satyr/archive/%{version}.tar.gz
-Patch1:	satyr-0.15-rpm5.patch
 BuildRequires: python-devel
 BuildRequires: elfutils-devel
 BuildRequires: binutils-devel
@@ -21,6 +20,7 @@ BuildRequires: libtool
 BuildRequires: pkgconfig
 BuildRequires: automake
 BuildRequires: gcc-c++
+BuildRequires: pkgconfig(python3)
 %if %{?enable_python_manpage}
 BuildRequires: python-sphinx
 %endif
