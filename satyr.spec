@@ -13,6 +13,7 @@ License: GPLv2+
 URL: https://github.com/abrt/satyr
 Source0: https://github.com/abrt/satyr/archive/%{version}.tar.gz
 BuildRequires: python-devel
+BuildRequires: pyton2-devel
 BuildRequires: elfutils-devel
 BuildRequires: binutils-devel
 BuildRequires: rpm-devel
