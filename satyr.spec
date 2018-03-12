@@ -22,7 +22,7 @@ BuildRequires: automake
 BuildRequires: gcc-c++
 BuildRequires: pkgconfig(python3)
 BuildRequires: dwz
-BuildRequires: pkgconfig(libgcrypt)
+BuildRequires: pkgconfig(popt)
 %if %{?enable_python_manpage}
 BuildRequires: python-sphinx
 %endif
