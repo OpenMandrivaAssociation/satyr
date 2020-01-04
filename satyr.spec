@@ -5,8 +5,8 @@
 %define libname %mklibname %{name} %{major}
 
 Name: satyr
-Version: 0.27
-Release: 2
+Version:	0.29
+Release:	1
 Summary: Tools to create anonymous, machine-friendly problem reports
 Group: System/Libraries
 License: GPLv2+
@@ -18,10 +18,12 @@ BuildRequires: elfutils-devel
 BuildRequires: binutils-devel
 BuildRequires: rpm-devel
 BuildRequires: libtool
+BuildRequires: gperf
 BuildRequires: pkgconfig
 BuildRequires: automake
 BuildRequires: gcc-c++
 BuildRequires: pkgconfig(python3)
+BuildRequires: pkgconfig(json-c)
 BuildRequires: dwz
 BuildRequires: pkgconfig(popt)
 %if %{?enable_python_manpage}
@@ -65,9 +67,7 @@ Python bindings for %{name}.
 
 %prep
 %setup -q
-%apply_patches
-#sed -i 's/env python/env python2/' tests/python/*.py
-
+%autopatch -p1
 printf '%s' '%{version}' > satyr-version
 autoreconf -fiv
 
@@ -104,4 +104,3 @@ autoreconf -fiv
 
 %files -n python-%{name}
 %{py_platsitedir}/%{name}
-%{_mandir}/man3/satyr-python.3*
