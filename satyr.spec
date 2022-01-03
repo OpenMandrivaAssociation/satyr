@@ -1,7 +1,7 @@
 %define _disable_ld_no_undefined 1
 %define enable_python_manpage 1
 
-%define major 3
+%define major 4
 %define libname %mklibname %{name} %{major}
 
 Name: satyr
