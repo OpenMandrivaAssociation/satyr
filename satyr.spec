@@ -92,7 +92,7 @@ autoreconf -fiv
 %postun -p /sbin/ldconfig
 
 %files
-%doc README NEWS COPYING
+%doc README.md NEWS COPYING
 %{_bindir}/satyr
 %{_mandir}/man1/%{name}.1*
 
