@@ -26,6 +26,7 @@ BuildRequires: pkgconfig(python3)
 BuildRequires: pkgconfig(json-c)
 BuildRequires: dwz
 BuildRequires: pkgconfig(popt)
+BuildRequires: pkgconfig(glib-2.0)
 %if %{?enable_python_manpage}
 BuildRequires: python-sphinx
 %endif
