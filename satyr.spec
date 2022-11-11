@@ -11,7 +11,7 @@ Summary: Tools to create anonymous, machine-friendly problem reports
 Group: System/Libraries
 License: GPLv2+
 URL: https://github.com/abrt/satyr
-Source0: https://github.com/abrt/satyr/archive/%{version}.tar.gz
+Source0: https://github.com/abrt/satyr/archive/%{version}/%{name}/-%{version}.tar.gz
 BuildRequires: python-devel
 BuildRequires: python2-devel
 BuildRequires: elfutils-devel
