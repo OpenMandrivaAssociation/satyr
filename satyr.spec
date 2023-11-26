@@ -6,14 +6,13 @@
 
 Name: satyr
 Version:	0.42
-Release:	2
+Release:	3
 Summary: Tools to create anonymous, machine-friendly problem reports
 Group: System/Libraries
 License: GPLv2+
 URL: https://github.com/abrt/satyr
 Source0: https://github.com/abrt/satyr/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires: python-devel
-BuildRequires: python2-devel
 BuildRequires: elfutils-devel
 BuildRequires: binutils-devel
 BuildRequires: rpm-devel
@@ -67,17 +66,16 @@ Obsoletes: python2-%{name} < %{EVRD}
 Python bindings for %{name}.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 printf '%s' '%{version}' > satyr-version
 autoreconf -fiv
+%configure
 
 %build
-%configure
-%make V=1
+%make_build V=1
 
 %install
-%makeinstall_std
+%make_install
 
 %check
 # FIXME As of 0.24, 2 tests are failing:
