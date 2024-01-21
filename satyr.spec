@@ -16,7 +16,7 @@ BuildRequires: python-devel
 BuildRequires: elfutils-devel
 BuildRequires: binutils-devel
 BuildRequires: rpm-devel
-BuildRequires: libtool
+BuildRequires: slibtool
 BuildRequires: gperf
 BuildRequires: pkgconfig
 BuildRequires: automake
@@ -72,10 +72,10 @@ autoreconf -fiv
 %configure
 
 %build
-%make_build V=1
+%make_build V=1 LIBTOOL=slibtool-shared
 
 %install
-%make_install
+%make_install LIBTOOL=slibtool-shared
 
 %check
 # FIXME As of 0.24, 2 tests are failing:
