@@ -5,8 +5,8 @@
 %define libname %mklibname %{name} %{major}
 
 Name: satyr
-Version:	0.42
-Release:	3
+Version:	0.43
+Release:	1
 Summary: Tools to create anonymous, machine-friendly problem reports
 Group: System/Libraries
 License: GPLv2+
