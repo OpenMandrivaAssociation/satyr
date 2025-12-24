@@ -12,8 +12,9 @@ Group: System/Libraries
 License: GPLv2+
 URL: https://github.com/abrt/satyr
 Source0: https://github.com/abrt/satyr/archive/%{version}/%{name}-%{version}.tar.gz
-BuildRequires:	autoconf
-BuildRequires:	libtool-base
+BuildRequires: make
+BuildRequires: autoconf
+BuildRequires: libtool-base
 BuildRequires: python-devel
 BuildRequires: elfutils-devel
 BuildRequires: binutils-devel
