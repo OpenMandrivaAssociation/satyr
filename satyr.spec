@@ -6,7 +6,7 @@
 
 Name: satyr
 Version:	0.43
-Release:	2
+Release:	3
 Summary: Tools to create anonymous, machine-friendly problem reports
 Group: System/Libraries
 License: GPLv2+
@@ -15,7 +15,6 @@ Source0: https://github.com/abrt/satyr/archive/%{version}/%{name}-%{version}.tar
 BuildRequires: make
 BuildRequires: autoconf
 BuildRequires: libtool-base
-BuildRequires: python-devel
 BuildRequires: elfutils-devel
 BuildRequires: binutils-devel
 BuildRequires: rpm-devel
@@ -30,7 +29,7 @@ BuildRequires: dwz
 BuildRequires: pkgconfig(popt)
 BuildRequires: pkgconfig(glib-2.0)
 %if %{?enable_python_manpage}
-BuildRequires: python-sphinx
+BuildRequires: python%{pyver}dist(sphinx)
 %endif
 
 %description
